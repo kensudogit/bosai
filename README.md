@@ -1,54 +1,80 @@
-# React + TypeScript + Vite
+# 気象地図アプリケーション
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+国土地理院の地図と気象データを組み合わせた地図アプリケーションです。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 地図レイヤー
+- 国土地理院の標準地図
+- 国土地理院の淡色地図
+- 国土地理院の英語版地図
+- 気象レイヤー（気温、降水量、天気、風、雲）
 
-## Expanding the ESLint configuration
+### マーカー機能
+- 気象観測地点のマーカー表示
+- マーカークリックで詳細情報ポップアップ
+- マーカーのスタイリングとアニメーション
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### コントロール
+- レイヤー切り替えボタン
+- 透明度調整スライダー
+- ズームコントロール
+- タイムライン（13:00-18:00）
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## セットアップ手順
+
+1. 必要なパッケージのインストール
+```bash
+yarn add react react-dom @types/react @types/react-dom typescript @types/node leaflet @types/leaflet axios react-icons
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. プロジェクトの初期化
+```bash
+cd C:\devlop\bosai
+yarn init -y
 ```
+
+3. 開発サーバーの起動
+```bash
+yarn start
+```
+
+## 実装手順
+
+1. 地図の初期化
+   - Leaflet.jsを使用して地図を表示
+   - 国土地理院のタイルレイヤーを追加
+
+2. レイヤー管理
+   - 複数の地図レイヤーを定義
+   - レイヤー切り替え機能の実装
+   - 透明度調整機能の追加
+
+3. マーカー機能
+   - 気象データの取得と表示
+   - マーカーのスタイリング
+   - ポップアップ情報の表示
+
+4. UIコンポーネント
+   - コントロールパネル
+   - タイムライン
+   - ズームコントロール
+   - 透明度スライダー
+
+## 技術スタック
+
+- React
+- TypeScript
+- Leaflet.js
+- Axios
+- React Icons
+
+## 注意事項
+
+- 気象データのAPIエンドポイントは、実際のデータソースに合わせて更新する必要があります
+- 地図の表示には国土地理院のタイルを使用しています
+- マーカーのスタイルはCSSでカスタマイズ可能です
+
+## ライセンス
+
+MIT License
